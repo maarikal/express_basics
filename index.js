@@ -1,5 +1,7 @@
 const express = require('express');
 const  app = express();
+// add directory to public folder
+app.use(express.static('public'));
 
 // set up brauser aadress row router
 app.get('/', (req, res) => {
