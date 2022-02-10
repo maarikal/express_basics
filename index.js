@@ -1,7 +1,13 @@
 const express = require('express');
+const path = require("path");
 const  app = express();
 // add directory to public folder
 app.use(express.static('public'));
+//add views directory path
+app.set('views', path.join(__dirname, 'views'));
+// add views template engine
+app.set('view engine', 'ejs');
+
 
 // set up brauser aadress row router
 app.get('/', (req, res) => {
@@ -25,7 +31,7 @@ app.get('/user/:username', (req, res) => {
     // get parameter data from address row
     let user = req.params.username;
     // use this data template
-    res.render('index.ejs', {username : user});
+    res.render('index', {username : user});
 });
 
 app.get('*', (req, res) => {
